@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Steganography Website - Decode</title>
+  <link rel="stylesheet" href="../../static/style.css">
+
+  <style>
+    .message-box {
+      background-color: #E0E0B0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+  </style>
+
+  <!--To have a preview of the image that is to be uploaded-->
+  <script>
+    function previewImage(event) {
+      var reader = new FileReader();
+      var imagePreview = document.getElementById('imagePreview');
+      reader.onload = function() {
+        imagePreview.src = reader.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Image Steganography Website</h1>
+  </header>
+  <hr>
+
+  {% include 'sidebar.html' %}
+
+  <div class="content">
+    <h2>Decode</h2>
+    <p>Welcome to the Decode page of the Image Steganography Website. Here you can decode secret messages from images using steganography techniques.</p>
+
+    <form action="/decode" method="post" enctype="multipart/form-data">
+      <div class="input-container">
+        <label for="image">Select an image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required onchange="previewImage(event)">
+        <br>
+        <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 300px;">
+      </div>
+      <div class="input-container">
+        <button type="submit" class="encode-button">Decode</button>
+      </div>
+    </form>
+
+    <!--The decoded message appears only when you upload a file to exist one-->
+    {% if decoded_message %}
+    <div class="result-container">
+      <h3>Last Decoded Message:</h3>
+      <div class="message-box">
+        <p style="font-size: 24px;">{{ decoded_message }}</p>
+      </div>
+    </div>
+    {% endif %}
+
+    <!--The same for the button to get the decoded message-->
+    <div class="input-container">
+      {% if decoded_message_available %}
+      <p>If you want to get the last decoded message in a text file, click this button:</p>
+      <a href="/image/last/decoded" class="encode-button">Download Last Decoded Message</a>
+      {% else %}
+      <span class="warning-message">There isn't any decoded message so far.</span>
+      {% endif %}
+    </div>
+
+  </div>
+
+</body>
+
+</html>

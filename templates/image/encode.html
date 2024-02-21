@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Steganography Website - Encode</title>
+  <link rel="stylesheet" href="../../static/style.css">
+
+  <!--To have a preview of the image that is to be uploaded-->
+  <script>
+    function previewImage(event) {
+      var reader = new FileReader();
+      var imagePreview = document.getElementById('imagePreview');
+
+      reader.onload = function() {
+        imagePreview.src = reader.result;
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Image Steganography Website</h1>
+  </header>
+  <hr>
+
+  {% include 'sidebar.html' %}
+
+  <div class="content">
+    <h2>Encode</h2>
+    <p>Welcome to the Encode page of the Image Steganography Website. Here you can encode secret messages into images using steganography techniques.</p>
+    
+    <form action="/encode" method="post" enctype="multipart/form-data">
+      <div class="input-container">
+        <label for="image">Select an image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required onchange="previewImage(event)">
+        <br>
+        <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 300px;">
+      </div>
+      <div class="input-container">
+        <label for="message">Enter the secret message:</label>
+        <br>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <div class="input-container">
+        <button type="submit" class="encode-button">Encode</button>
+      </div>
+    </form>
+
+    <p>If you want to get the last encoded image again, click this button</p>
+    <form action="/image/last/encoded" method="get">
+      <div>
+        <button type="submit" class="encode-button">Get Encoded Image</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>

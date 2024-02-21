@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Steganography Website</title>
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Image Steganography Website</h1>
+  </header>
+  <hr>
+
+  {% include 'sidebar.html' %}
+
+  <div class="content">
+    <h2>Steganography</h2>
+    <p>
+      Steganography is the practice of hiding information within another medium (which is, usually, communicated in plain sight). If in encryption the difficulty lies in finding the secret (i.e.: the key) used to obfuscate the data, here the problem consists of detecting whether the data exists at all (the plausible deniability concept).
+    </p>
+    <p>
+      One stegano technique that is easy to understand consists of encoding messages into pixel data. As we all know, images are made out of pixels, and pixels are made out of three color channels: Red, Green, Blue. Usually, each channel is represented via an 8-bit value (0 - 255, or 0xFF). The higher the value, the more intense the color. Thus, it follows that altering the more significant bits of any channel will produce visible alterations: in the image below, we masked (i.e.: set to 0) the most significant bit of every channel, of every pixel.
+    </p>
+    <p>
+      But what happens if we play around with some of the less significant bits? Answer: no human will be able to tell the difference! As a result, one way to exfiltrate data is by splitting the message into bits and encoding them into the least significant bits of the image. If only the least significant bit is used, you will need 3px in order to encode 1 byte of data.
+    </p>
+    <div class="image-row">
+      <div class="image-section">
+        <img src="../static/images/last_input.png" alt="Input Image">
+        <p class="image-text">The input image</p>
+      </div>
+      <div class="arrow-image">
+        <img src="../static/images/arrow.png" alt="Arrow" class="arrow-image">
+      </div>
+      <div class="image-section">
+        <img src="../static/images/last_encoded.png" alt="Encoded Image">
+        <p class="image-text">The encoded image</p>
+      </div>
+    </div>
+
+    <p class="message">See, there is no difference. I say it is pretty safe :).</p>
+  </div>
+
+</body>
+
+</html>

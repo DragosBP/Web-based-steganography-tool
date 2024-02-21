@@ -1,0 +1,117 @@
+/* Main body styles */
+body {
+  background-color: #FFFFE0;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background-color: lightblue;
+  padding: 1rem;
+  text-align: center;
+  color: #FFF;
+  font-size: 2rem;
+}
+
+/* Line bar */
+hr {
+  border: none;
+  height: 1px;
+  background-color: #DDD;
+  margin: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #F1F1F1;
+  width: 15%;
+  min-height: 100vh;
+  float: left;
+  padding: 1rem;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar a {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 2.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #888;
+  color: #FFF;
+}
+
+/* Main content */
+.content {
+  padding: 1rem;
+  margin-left: 17%;
+}
+
+/* Image row */
+.image-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.image-section {
+  text-align: center;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.arrow-image {
+  max-width: 150px;
+  height: auto;
+  margin: 0 5px;
+}
+
+/* Text under images */
+.image-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Message */
+.message {
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+/* Input container */
+.input-container {
+  margin-bottom: 1rem;
+}
+
+/* Encode button */
+.encode-button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: #FFFFE0;
+  color: #111;
+  border: none;
+  cursor: pointer;
+}
+
+.encode-button:hover {
+  background-color: #E0E0B0;
+}
